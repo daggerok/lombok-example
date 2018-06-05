@@ -15,14 +15,9 @@ plugins {
 allprojects {
     buildscript {
         ext {
-            javaVersion = JavaVersion.VERSION_1_8
             lombokVersion = '1.16.20'
             slf4jVersion = '1.7.25'
-
-            junitPlatformVersion = '1.2.0'
             junitJupiterVersion = '5.2.0'
-            hamcrestVersion = '1.3'
-            junit4Version = '4.12'
         }
         apply from: "$rootDir/gradle/repositories.gradle"
     }
@@ -37,7 +32,7 @@ allprojects {
 
     clean.doFirst {
         delete fileTree(rootDir) {
-            include 'dists-*/**'
+            include "$rootDir/${project.name}-$project.version/**"
         }
     }
 }
@@ -46,24 +41,26 @@ subprojects {
     apply plugin: 'java'
 
     javadoc.failOnError = false
+    targetCompatibility = sourceCompatibility = JavaVersion.VERSION_1_8
 
     dependencies {
-        compile "org.slf4j:slf4j-api:$slf4jVersion"
-        compile "org.slf4j:jul-to-slf4j:$slf4jVersion"
-        compile "org.slf4j:log4j-over-slf4j:$slf4jVersion"
-        compile 'ch.qos.logback:logback-classic:1.2.3'
+        implementation "org.slf4j:slf4j-api:$slf4jVersion"
+        implementation "org.slf4j:jul-to-slf4j:$slf4jVersion"
+        implementation "org.slf4j:log4j-over-slf4j:$slf4jVersion"
+        implementation 'ch.qos.logback:logback-classic:1.2.3'
     }
 
     // junit
     dependencies {
-        testImplementation "junit:junit:$junit4Version"
-        testImplementation "org.hamcrest:hamcrest-core:$hamcrestVersion"
+        testImplementation 'junit:junit:4.12'
+        testImplementation 'org.hamcrest:hamcrest-core:1.3'
         testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
         testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$junitJupiterVersion", {
             because 'allows JUnit 3 and JUnit 4 tests to run'
         }
-        testRuntime "org.junit.platform:junit-platform-launcher:$junitPlatformVersion", {
+        testRuntime 'org.junit.platform:junit-platform-launcher:1.2.0', {
             because 'allows tests to run from IDEs that bundle older version of launcher'
         }
     }

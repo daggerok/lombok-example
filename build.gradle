@@ -9,7 +9,7 @@
 plugins {
     id 'idea'
     id 'eclipse'
-    id 'io.franzbecker.gradle-lombok' version '1.14' apply false
+    id 'io.franzbecker.gradle-lombok' version '1.14' apply false // used by trololo module
 }
 
 allprojects {
@@ -42,7 +42,6 @@ allprojects {
     }
 }
 
-// lombok
 subprojects {
     apply plugin: 'java'
 

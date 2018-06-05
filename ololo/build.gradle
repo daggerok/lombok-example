@@ -1,0 +1,16 @@
+/* using dependencies configurations */
+
+apply plugin: 'application'
+//apply plugin: 'com.github.johnrengelman.shadow'
+
+mainClassName = 'daggerok.App'
+//jar.dependsOn shadowJar
+//jar.enabled = false
+
+dependencies {
+  compileOnly "org.projectlombok:lombok:$lombokVersion"
+  testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+
+  annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+  testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}

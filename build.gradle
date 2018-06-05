@@ -31,9 +31,7 @@ allprojects {
     apply from: "$rootDir/gradle/repositories.gradle"
 
     clean.doFirst {
-        delete fileTree(rootDir) {
-            include "$rootDir/${project.name}-$project.version/**"
-        }
+        delete "$rootDir/${project.name}-$project.version", "$rootDir/out"
     }
 }
 

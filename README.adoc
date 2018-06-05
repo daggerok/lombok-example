@@ -1,4 +1,4 @@
-= Dradle + Lombok: ololo-trololo
+= Gradle + Lombok image:https://travis-ci.org/daggerok/lombok-example.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/lombok-example"]
 
 //tag::content[]
 .build distributions

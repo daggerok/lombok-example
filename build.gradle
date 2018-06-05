@@ -31,7 +31,7 @@ allprojects {
     apply from: "$rootDir/gradle/repositories.gradle"
 
     clean.doFirst {
-        delete "$rootDir/${project.name}-$project.version", "$rootDir/out"
+        delete "$projectDir/${project.name}-$project.version", "$projectDir/out"
     }
 }
 

@@ -1,0 +1,12 @@
+apt:
+  update: true
+  packages:
+  - bash
+  - unzip
+language: java
+jdk: oraclejdk8
+install: true
+script:
+- ./gradlew clean distZip
+- unzip ololo/build/distributions/ololo-0.0.1.zip
+- unzip trololo/build/distributions/trololo-0.0.1.zip

@@ -1,10 +1,7 @@
 /* using gradle-lombok plugin */
 
 apply plugin: 'application'
-//apply plugin: 'com.github.johnrengelman.shadow'
 
 mainClassName = 'daggerok.App'
-//jar.dependsOn shadowJar
-//jar.enabled = false
 
 apply plugin: 'io.franzbecker.gradle-lombok'
